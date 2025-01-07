@@ -1,0 +1,55 @@
+{
+    "layers": [
+        {
+            "type": "conv",
+            "input_path": "C:/Users/mcw/Downloads/PROJECT/data/input/conv2d_6_filters.bin",
+            "weights_path": "C:/Users/mcw/Downloads/PROJECT/data/input/conv2d_6_filters.bin",
+            "bias_path": "C:/Users/mcw/Downloads/PROJECT/data/input/conv2d_6_biases.bin",
+            "output_path": "C:/Users/mcw/Downloads/PROJECT/data/output/conv2d_6_output.bin",
+            "attributes": {
+                "input_height": 24,
+                "input_width": 24,
+                "input_channels": 3,
+                "kernel_height": 3,
+                "kernel_width": 3,
+                "output_channels": 64,
+                "stride": 1,
+                "padding": "same"
+            }
+        },
+        {
+            "type": "conv",
+            "input_path": "C:/Users/mcw/Downloads/PROJECT/data/output/conv2d_6_output.bin",
+            "weights_path": "C:/Users/mcw/Downloads/PROJECT/data/input/conv2d_7_filters.bin",
+            "bias_path": "C:/Users/mcw/Downloads/PROJECT/data/input/conv2d_7_biases.bin",
+            "output_path": "C:/Users/mcw/Downloads/PROJECT/data/output/conv2d_7_output.bin",
+            "attributes": {
+                "input_height": 24,
+                "input_width": 24,
+                "input_channels": 64,
+                "kernel_height": 3,
+                "kernel_width": 3,
+                "output_channels": 128,
+                "stride": 1,
+                "padding": "same"
+            }
+        },
+        {
+            "type": "conv",
+            "input_path": "C:/Users/mcw/Downloads/PROJECT/data/output/conv2d_7_output.bin",
+            "weights_path": "C:/Users/mcw/Downloads/PROJECT/data/input/conv2d_8_filters.bin",
+            "bias_path": "C:/Users/mcw/Downloads/PROJECT/data/input/conv2d_8_biases.bin",
+            "output_path": "C:/Users/mcw/Downloads/PROJECT/data/output/conv2d_8_output.bin",
+            "attributes": {
+                "input_height": 24,
+                "input_width": 24,
+                "input_channels": 128,
+                "kernel_height": 3,
+                "kernel_width": 3,
+                "output_channels": 256,
+                "stride": 1,
+                "padding": "same"
+            }
+        }
+    ]
+}
