@@ -17,7 +17,6 @@
 #include "dense_test.h"
 #include "relu_test.h"
 #include "softmax_test.h"
-#include "max_pool_test.h"
 using json = nlohmann::json;
 
 // Function to save a vector to a .bin file
