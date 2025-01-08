@@ -19,7 +19,11 @@ add_executable(main
     src/main.cpp
     Operators/src/conv.cpp
     Operators/src/relu.cpp
+    Operators/src/dense.cpp
     utilities/src/file_utils.cpp
+    Operators/src/flatten.cpp
+    Operators/src/max_pool.cpp
+    Operators/src/softmax.cpp
 )
 # Add test executable
 add_executable(test_operators
