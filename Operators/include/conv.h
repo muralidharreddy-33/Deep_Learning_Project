@@ -3,28 +3,20 @@
 
 #include <vector>
 #include <string>
-#include <fstream>
-#include <iostream>
 
 class ConvLayer {
 public:
-    ConvLayer(const std::string& input_path, const std::string& weights_path, const std::string& bias_path, 
-              int input_height, int input_width, int input_channels, 
-              int kernel_height, int kernel_width, int output_channels, 
-              int stride, const std::string& padding);
-    void execute(const std::string& output_path);
+    ConvLayer(const std::string& kernel_file, const std::string& bias_file,
+              const std::vector<size_t>& kernel_shape, const std::vector<size_t>& bias_shape);
+    std::vector<float> forward(const std::vector<float>& input, const std::vector<size_t>& input_shape);
 
 private:
-    std::vector<float> input;
-    std::vector<float> weights;
-    std::vector<float> bias;
-    int input_height, input_width, input_channels;
-    int kernel_height, kernel_width, output_channels;
-    int stride;
-    std::string padding;
+    std::vector<float> kernel_;
+    std::vector<float> bias_;
+    std::vector<size_t> kernel_shape_;
+    std::vector<size_t> bias_shape_;
 
-    void load_bin_data(const std::string& path, std::vector<float>& data);
-    void save_bin_data(const std::string& path, const std::vector<float>& data);
+    std::vector<float> load_binary_file(const std::string& file, size_t size);
 };
 
 #endif // CONV_H
