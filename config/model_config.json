@@ -1,55 +1,99 @@
 {
     "layers": [
-        {
-            "type": "conv",
-            "input_path": "C:/Users/mcw/Downloads/PROJECT/data/input/conv2d_6_filters.bin",
-            "weights_path": "C:/Users/mcw/Downloads/PROJECT/data/input/conv2d_6_filters.bin",
-            "bias_path": "C:/Users/mcw/Downloads/PROJECT/data/input/conv2d_6_biases.bin",
-            "output_path": "C:/Users/mcw/Downloads/PROJECT/data/output/conv2d_6_output.bin",
-            "attributes": {
-                "input_height": 24,
-                "input_width": 24,
-                "input_channels": 3,
-                "kernel_height": 3,
-                "kernel_width": 3,
-                "output_channels": 64,
-                "stride": 1,
-                "padding": "same"
-            }
+      {
+        "type": "Conv2D",
+        "name": "conv2d_0",
+        "kernel": {
+          "file": "C:/Users/mcw/Downloads/TEMP1_PROJECT/data/input/layer_0_conv2d_kernel.bin",
+          "shape": [3, 3, 3, 32],
+          "dtype": "float32"
         },
-        {
-            "type": "conv",
-            "input_path": "C:/Users/mcw/Downloads/PROJECT/data/output/conv2d_6_output.bin",
-            "weights_path": "C:/Users/mcw/Downloads/PROJECT/data/input/conv2d_7_filters.bin",
-            "bias_path": "C:/Users/mcw/Downloads/PROJECT/data/input/conv2d_7_biases.bin",
-            "output_path": "C:/Users/mcw/Downloads/PROJECT/data/output/conv2d_7_output.bin",
-            "attributes": {
-                "input_height": 24,
-                "input_width": 24,
-                "input_channels": 64,
-                "kernel_height": 3,
-                "kernel_width": 3,
-                "output_channels": 128,
-                "stride": 1,
-                "padding": "same"
-            }
+        "bias": {
+          "file": "C:/Users/mcw/Downloads/TEMP1_PROJECT/data/input/layer_0_conv2d_bias.bin",
+          "shape": [32],
+          "dtype": "float32"
         },
-        {
-            "type": "conv",
-            "input_path": "C:/Users/mcw/Downloads/PROJECT/data/output/conv2d_7_output.bin",
-            "weights_path": "C:/Users/mcw/Downloads/PROJECT/data/input/conv2d_8_filters.bin",
-            "bias_path": "C:/Users/mcw/Downloads/PROJECT/data/input/conv2d_8_biases.bin",
-            "output_path": "C:/Users/mcw/Downloads/PROJECT/data/output/conv2d_8_output.bin",
-            "attributes": {
-                "input_height": 24,
-                "input_width": 24,
-                "input_channels": 128,
-                "kernel_height": 3,
-                "kernel_width": 3,
-                "output_channels": 256,
-                "stride": 1,
-                "padding": "same"
-            }
-        }
+        "activation": "relu",
+        "output_file": "C:/Users/mcw/Downloads/TEMP1_PROJECT/data/output/layer_0_conv2d_output.bin"
+      },
+      {
+        "type": "MaxPooling2D",
+        "name": "max_pooling2d_0",
+        "output_file": "C:/Users/mcw/Downloads/TEMP1_PROJECT/data/output/layer_1_max_pooling2d_output.bin"
+      },
+      {
+        "type": "Conv2D",
+        "name": "conv2d_1",
+        "kernel": {
+          "file": "C:/Users/mcw/Downloads/TEMP1_PROJECT/data/input/layer_2_conv2d_1_kernel.bin",
+          "shape": [3, 3, 32, 64],
+          "dtype": "float32"
+        },
+        "bias": {
+          "file": "C:/Users/mcw/Downloads/TEMP1_PROJECT/data/input/layer_2_conv2d_1_bias.bin",
+          "shape": [64],
+          "dtype": "float32"
+        },
+        "activation": "relu",
+        "output_file": "C:/Users/mcw/Downloads/TEMP1_PROJECT/data/output/layer_2_conv2d_1_output.bin"
+      },
+      {
+        "type": "MaxPooling2D",
+        "name": "max_pooling2d_1",
+        "output_file":"C:/Users/mcw/Downloads/TEMP1_PROJECT/data/output/layer_3_max_pooling2d_1_output.bin" 
+      },
+      {
+        "type": "Conv2D",
+        "name": "conv2d_2",
+        "kernel": {
+          "file": "C:/Users/mcw/Downloads/TEMP1_PROJECT/data/input/layer_4_conv2d_2_kernel.bin",
+          "shape": [3, 3, 64, 64],
+          "dtype": "float32"
+        },
+        "bias": {
+          "file": "C:/Users/mcw/Downloads/TEMP1_PROJECT/data/input/layer_4_conv2d_2_bias.bin",
+          "shape": [64],
+          "dtype": "float32"
+        },
+        "activation": "relu",
+        "output_file": "C:/Users/mcw/Downloads/TEMP1_PROJECT/data/output/layer_4_conv2d_2_output.bin"
+      },
+      {
+        "type": "Flatten",
+        "name": "flatten",
+        "output_file": "C:/Users/mcw/Downloads/TEMP1_PROJECT/data/output/layer_5_flatten_output.bin"
+      },
+      {
+        "type": "Dense",
+        "name": "dense_0",
+        "kernel": {
+          "file": "C:/Users/mcw/Downloads/TEMP1_PROJECT/data/input/layer_6_dense_kernel.bin",
+          "shape": [1024, 64],
+          "dtype": "float32"
+        },
+        "bias": {
+          "file": "C:/Users/mcw/Downloads/TEMP1_PROJECT/data/input/layer_6_dense_bias.bin",
+          "shape": [64],
+          "dtype": "float32"
+        },
+        "activation": "relu",
+        "output_file": "C:/Users/mcw/Downloads/TEMP1_PROJECT/data/output/layer_6_dense_output.bin"
+      },
+      {
+        "type": "Dense",
+        "name": "dense_1",
+        "kernel": {
+          "file": "C:/Users/mcw/Downloads/TEMP1_PROJECT/data/input/layer_7_dense_1_kernel.bin",
+          "shape": [64, 10],
+          "dtype": "float32"
+        },
+        "bias": {
+          "file": "C:/Users/mcw/Downloads/TEMP1_PROJECT/data/input/layer_7_dense_1_bias.bin",
+          "shape": [10],
+          "dtype": "float32"
+        },
+        "activation": "softmax",
+        "output_file": "C:/Users/mcw/Downloads/TEMP1_PROJECT/data/output/layer_7_dense_1_output.bin"
+      }
     ]
-}
+  }
