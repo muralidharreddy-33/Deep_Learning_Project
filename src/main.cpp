@@ -9,6 +9,14 @@
 #include "dense.h"
 #include "relu.h"
 #include "softmax.h"
+
+// Include test headers
+#include "Test_Operators/include/conv_test.h"
+#include "Test_Operators/include/max_pool_test.h"
+#include "Test_Operators/include/flatten_test.h"
+#include "Test_Operators/include/dense_test.h"
+#include "Test_Operators/include/relu_test.h"
+#include "Test_Operators/include/softmax_test.h"
 using json = nlohmann::json;
 
 // Function to save a vector to a .bin file
@@ -65,7 +73,7 @@ int main(int argc, char* argv[]) {
             size_t output_width = input_shape[1] - kernel_shape[1] + 1;
             size_t num_filters = kernel_shape[3];
             input_shape = {output_height, output_width, num_filters};
-
+              
             // Save output
             save_binary_file(layer_config["output_file"], input);
         } else if (layer_type == "MaxPooling2D") {

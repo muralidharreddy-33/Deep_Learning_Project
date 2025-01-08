@@ -20,15 +20,25 @@ add_executable(main
     Operators/src/conv.cpp
     Operators/src/relu.cpp
     Operators/src/dense.cpp
-    utilities/src/file_utils.cpp
     Operators/src/flatten.cpp
     Operators/src/max_pool.cpp
     Operators/src/softmax.cpp
+    utilities/src/file_utils.cpp
 )
 # Add test executable
 add_executable(test_operators
     Test_Operators/src/main_test.cpp
     Test_Operators/src/conv_test.cpp
     Test_Operators/src/relu_test.cpp
+    Test_Operators/src/max_pool_test.cpp
+    Test_Operators/src/softmax_test.cpp
+    Test_Operators/src/dense_test.cpp
+    Test_Operators/src/flatten_test.cpp
     utilities/src/file_utils.cpp
+    Operators/src/conv.cpp
+    Operators/src/relu.cpp
+    Operators/src/dense.cpp
+    Operators/src/flatten.cpp
+    Operators/src/max_pool.cpp
+    Operators/src/softmax.cpp
 )
