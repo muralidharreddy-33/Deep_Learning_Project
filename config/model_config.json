@@ -4,96 +4,96 @@
         "type": "Conv2D",
         "name": "conv2d_0",
         "kernel": {
-          "file": "C:/Users/mcw/Downloads/TEMP1_PROJECT/data/input/layer_0_conv2d_kernel.bin",
+          "file": "C:/Users/mcw/Downloads/DEEP_LEARNING_PROJECT/data/input/layer_0_conv2d_kernel.bin",
           "shape": [3, 3, 3, 32],
           "dtype": "float32"
         },
         "bias": {
-          "file": "C:/Users/mcw/Downloads/TEMP1_PROJECT/data/input/layer_0_conv2d_bias.bin",
+          "file": "C:/Users/mcw/Downloads/DEEP_LEARNING_PROJECT/data/input/layer_0_conv2d_bias.bin",
           "shape": [32],
           "dtype": "float32"
         },
         "activation": "relu",
-        "output_file": "C:/Users/mcw/Downloads/TEMP1_PROJECT/data/output/layer_0_conv2d_output.bin"
+        "output_file": "C:/Users/mcw/Downloads/DEEP_LEARNING_PROJECT/data/output/layer_0_conv2d_output.bin"
       },
       {
         "type": "MaxPooling2D",
         "name": "max_pooling2d_0",
-        "output_file": "C:/Users/mcw/Downloads/TEMP1_PROJECT/data/output/layer_1_max_pooling2d_output.bin"
+        "output_file": "C:/Users/mcw/Downloads/DEEP_LEARNING_PROJECT/data/output/layer_1_max_pooling2d_output.bin"
       },
       {
         "type": "Conv2D",
         "name": "conv2d_1",
         "kernel": {
-          "file": "C:/Users/mcw/Downloads/TEMP1_PROJECT/data/input/layer_2_conv2d_1_kernel.bin",
+          "file": "C:/Users/mcw/Downloads/DEEP_LEARNING_PROJECT/data/input/layer_2_conv2d_1_kernel.bin",
           "shape": [3, 3, 32, 64],
           "dtype": "float32"
         },
         "bias": {
-          "file": "C:/Users/mcw/Downloads/TEMP1_PROJECT/data/input/layer_2_conv2d_1_bias.bin",
+          "file": "C:/Users/mcw/Downloads/DEEP_LEARNING_PROJECT/data/input/layer_2_conv2d_1_bias.bin",
           "shape": [64],
           "dtype": "float32"
         },
         "activation": "relu",
-        "output_file": "C:/Users/mcw/Downloads/TEMP1_PROJECT/data/output/layer_2_conv2d_1_output.bin"
+        "output_file": "C:/Users/mcw/Downloads/DEEP_LEARNING_PROJECT/data/output/layer_2_conv2d_1_output.bin"
       },
       {
         "type": "MaxPooling2D",
         "name": "max_pooling2d_1",
-        "output_file":"C:/Users/mcw/Downloads/TEMP1_PROJECT/data/output/layer_3_max_pooling2d_1_output.bin" 
+        "output_file":"C:/Users/mcw/Downloads/DEEP_LEARNING_PROJECT/data/output/layer_3_max_pooling2d_1_output.bin" 
       },
       {
         "type": "Conv2D",
         "name": "conv2d_2",
         "kernel": {
-          "file": "C:/Users/mcw/Downloads/TEMP1_PROJECT/data/input/layer_4_conv2d_2_kernel.bin",
+          "file": "C:/Users/mcw/Downloads/DEEP_LEARNING_PROJECT/data/input/layer_4_conv2d_2_kernel.bin",
           "shape": [3, 3, 64, 64],
           "dtype": "float32"
         },
         "bias": {
-          "file": "C:/Users/mcw/Downloads/TEMP1_PROJECT/data/input/layer_4_conv2d_2_bias.bin",
+          "file": "C:/Users/mcw/Downloads/DEEP_LEARNING_PROJECT/data/input/layer_4_conv2d_2_bias.bin",
           "shape": [64],
           "dtype": "float32"
         },
         "activation": "relu",
-        "output_file": "C:/Users/mcw/Downloads/TEMP1_PROJECT/data/output/layer_4_conv2d_2_output.bin"
+        "output_file": "C:/Users/mcw/Downloads/DEEP_LEARNING_PROJECT/data/output/layer_4_conv2d_2_output.bin"
       },
       {
         "type": "Flatten",
         "name": "flatten",
-        "output_file": "C:/Users/mcw/Downloads/TEMP1_PROJECT/data/output/layer_5_flatten_output.bin"
+        "output_file": "C:/Users/mcw/Downloads/DEEP_LEARNING_PROJECT/data/output/layer_5_flatten_output.bin"
       },
       {
         "type": "Dense",
         "name": "dense_0",
         "kernel": {
-          "file": "C:/Users/mcw/Downloads/TEMP1_PROJECT/data/input/layer_6_dense_kernel.bin",
+          "file": "C:/Users/mcw/Downloads/DEEP_LEARNING_PROJECT/data/input/layer_6_dense_kernel.bin",
           "shape": [1024, 64],
           "dtype": "float32"
         },
         "bias": {
-          "file": "C:/Users/mcw/Downloads/TEMP1_PROJECT/data/input/layer_6_dense_bias.bin",
+          "file": "C:/Users/mcw/Downloads/DEEP_LEARNING_PROJECT/data/input/layer_6_dense_bias.bin",
           "shape": [64],
           "dtype": "float32"
         },
         "activation": "relu",
-        "output_file": "C:/Users/mcw/Downloads/TEMP1_PROJECT/data/output/layer_6_dense_output.bin"
+        "output_file": "C:/Users/mcw/Downloads/DEEP_LEARNING_PROJECT/data/output/layer_6_dense_output.bin"
       },
       {
         "type": "Dense",
         "name": "dense_1",
         "kernel": {
-          "file": "C:/Users/mcw/Downloads/TEMP1_PROJECT/data/input/layer_7_dense_1_kernel.bin",
+          "file": "C:/Users/mcw/Downloads/DEEP_LEARNING_PROJECT/data/input/layer_7_dense_1_kernel.bin",
           "shape": [64, 10],
           "dtype": "float32"
         },
         "bias": {
-          "file": "C:/Users/mcw/Downloads/TEMP1_PROJECT/data/input/layer_7_dense_1_bias.bin",
+          "file": "C:/Users/mcw/Downloads/DEEP_LEARNING_PROJECT/data/input/layer_7_dense_1_bias.bin",
           "shape": [10],
           "dtype": "float32"
         },
         "activation": "softmax",
-        "output_file": "C:/Users/mcw/Downloads/TEMP1_PROJECT/data/output/layer_7_dense_1_output.bin"
+        "output_file": "C:/Users/mcw/Downloads/DEEP_LEARNING_PROJECT/data/output/layer_7_dense_1_output.bin"
       }
     ]
   }
