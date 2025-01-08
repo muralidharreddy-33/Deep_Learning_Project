@@ -9,14 +9,8 @@
 #include "dense.h"
 #include "relu.h"
 #include "softmax.h"
+#include <random>
 
-// Include test headers
-#include "conv_test.h"
-#include "max_pool_test.h"
-#include "flatten_test.h"
-#include "dense_test.h"
-#include "relu_test.h"
-#include "softmax_test.h"
 using json = nlohmann::json;
 
 // Function to save a vector to a .bin file
@@ -27,7 +21,32 @@ void save_binary_file(const std::string& file, const std::vector<float>& data) {
     }
     out.write(reinterpret_cast<const char*>(data.data()), data.size() * sizeof(float));
 }
-
+// Function to load a vector from a .bin file
+std::vector<float> load_binary_file(const std::string& file) {
+    std::ifstream in(file, std::ios::binary);
+    if (!in) {
+        throw std::runtime_error("Failed to open file: " + file);
+    }
+    in.seekg(0, std::ios::end);
+    size_t size = in.tellg();
+    in.seekg(0, std::ios::beg);
+    std::vector<float> data(size / sizeof(float));
+    in.read(reinterpret_cast<char*>(data.data()), size);
+    return data;
+}
+bool compare_outputs(const std::vector<float>& output, const std::vector<float>& reference, float tolerance = 0.001) {
+    if (output.size() != reference.size()) {
+        std::cerr << "Error: Output and reference sizes do not match!" << std::endl;
+        return false;
+    }
+    std::cout<<output.size()<<" "<<reference.size()<<" "<<std::endl;
+    for (size_t i = 0; i < output.size(); ++i) {
+        if (std::abs(output[i] - reference[i]) > tolerance) {
+            return false;
+        }
+    }
+    return true;
+}
 int main(int argc, char* argv[]) {
     // Check if the configuration file path is provided
     if (argc < 2) {
@@ -47,9 +66,8 @@ int main(int argc, char* argv[]) {
     config_file >> config;
 
     // Example input (replace with actual input data)
-    std::vector<float> input(32 * 32 * 3, 1.0f); // Example input (32x32 image with 3 channels)
+    std::vector<float> input(32 * 32 * 3,1.0f); // Example input (32x32 image with 3 channels)
     std::vector<size_t> input_shape = {32, 32, 3};
-
     // Iterate over layers
     for (const auto& layer_config : config["layers"]) {
         std::string layer_type = layer_config["type"];
@@ -73,8 +91,11 @@ int main(int argc, char* argv[]) {
             size_t output_width = input_shape[1] - kernel_shape[1] + 1;
             size_t num_filters = kernel_shape[3];
             input_shape = {output_height, output_width, num_filters};
-              
-            // Save output
+            std::vector<float> reference_output = load_binary_file(layer_config["reference_file"]);
+            // Compare outputs
+            bool pass = compare_outputs(input, reference_output);
+            std::cout << "Layer " << layer_name << " (" << layer_type << "): " << (pass ? "PASS" : "FAIL") << std::endl;
+
             save_binary_file(layer_config["output_file"], input);
         } else if (layer_type == "MaxPooling2D") {
             MaxPoolLayer max_pool;
@@ -85,6 +106,12 @@ int main(int argc, char* argv[]) {
             size_t output_width = input_shape[1] / 2;
             size_t num_channels = input_shape[2];
             input_shape = {output_height, output_width, num_channels};
+            // Load reference output
+            std::vector<float> reference_output = load_binary_file(layer_config["reference_file"]);
+
+            // Compare outputs
+            bool pass = compare_outputs(input, reference_output);
+            std::cout << "Layer " << layer_name << " (" << layer_type << "): " << (pass ? "PASS" : "FAIL") << std::endl;
 
             // Save output
             save_binary_file(layer_config["output_file"], input);

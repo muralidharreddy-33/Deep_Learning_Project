@@ -1,6 +1,7 @@
 #include "../include/conv.h"
 #include <fstream>
 #include <stdexcept>
+#include <iostream> // For debugging
 
 ConvLayer::ConvLayer(const std::string& kernel_file, const std::string& bias_file,
                      const std::vector<size_t>& kernel_shape, const std::vector<size_t>& bias_shape)
@@ -11,11 +12,12 @@ ConvLayer::ConvLayer(const std::string& kernel_file, const std::string& bias_fil
     }
     kernel_ = load_binary_file(kernel_file, kernel_size);
 
-    size_t bias_size = 1;
-    for (size_t dim : bias_shape) {
-        bias_size *= dim;
-    }
+    size_t bias_size = bias_shape[0]; // Bias size should match the number of filters
     bias_ = load_binary_file(bias_file, bias_size);
+
+    // Debugging: Verify sizes
+    std::cout << "Loaded kernel size: " << kernel_.size() << ", expected: " << kernel_size << std::endl;
+    std::cout << "Loaded bias size: " << bias_.size() << ", expected: " << bias_size << std::endl;
 }
 
 std::vector<float> ConvLayer::forward(const std::vector<float>& input, const std::vector<size_t>& input_shape) {
@@ -33,6 +35,7 @@ std::vector<float> ConvLayer::forward(const std::vector<float>& input, const std
 
     std::vector<float> output(output_height * output_width * num_filters, 0.0f);
 
+    // Perform convolution
     for (size_t f = 0; f < num_filters; ++f) {
         for (size_t i = 0; i < output_height; ++i) {
             for (size_t j = 0; j < output_width; ++j) {
@@ -40,14 +43,22 @@ std::vector<float> ConvLayer::forward(const std::vector<float>& input, const std
                 for (size_t c = 0; c < kernel_channels; ++c) {
                     for (size_t ki = 0; ki < kernel_height; ++ki) {
                         for (size_t kj = 0; kj < kernel_width; ++kj) {
-                            size_t input_index = (i + ki) * input_width * input_channels + (j + kj) * input_channels + c;
+                            size_t input_index = (i + ki) * input_width * input_channels + 
+                                                 (j + kj) * input_channels + c;
+
                             size_t kernel_index = ki * kernel_width * kernel_channels * num_filters +
                                                  kj * kernel_channels * num_filters + c * num_filters + f;
-                            sum += input[input_index] * kernel_[kernel_index];
+
+                            if (input_index < input.size() && kernel_index < kernel_.size()) {
+                                sum += input[input_index] * kernel_[kernel_index];
+                            } else {
+                                std::cerr << "Index out of bounds: input_index=" << input_index 
+                                          << ", kernel_index=" << kernel_index << std::endl;
+                            }
                         }
                     }
                 }
-                sum += bias_[f];
+                sum += bias_[f]; // Add bias
                 size_t output_index = i * output_width * num_filters + j * num_filters + f;
                 output[output_index] = sum;
             }
