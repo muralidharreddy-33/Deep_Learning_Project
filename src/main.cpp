@@ -121,6 +121,13 @@ int main(int argc, char* argv[]) {
 
             input_shape = {input.size()};
 
+            // Load reference output
+            std::vector<float> reference_output = load_binary_file(layer_config["reference_file"]);
+
+            // Compare outputs
+            bool pass = compare_outputs(input, reference_output);
+            std::cout << "Layer " << layer_name << " (" << layer_type << "): " << (pass ? "PASS" : "FAIL") << std::endl;
+
             // Save output
             save_binary_file(layer_config["output_file"], input);
         } else if (layer_type == "Dense") {
@@ -141,7 +148,12 @@ int main(int argc, char* argv[]) {
             }
 
             input_shape = {input.size()};
+             // Load reference output
+            std::vector<float> reference_output = load_binary_file(layer_config["reference_file"]);
 
+            // Compare outputs
+            bool pass = compare_outputs(input, reference_output);
+            std::cout << "Layer " << layer_name << " (" << layer_type << "): " << (pass ? "PASS" : "FAIL") << std::endl;
             // Save output
             save_binary_file(layer_config["output_file"], input);
         }
