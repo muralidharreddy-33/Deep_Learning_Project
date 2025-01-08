@@ -11,12 +11,13 @@
 #include "softmax.h"
 
 // Include test headers
-#include "Test_Operators/include/conv_test.h"
-#include "Test_Operators/include/max_pool_test.h"
-#include "Test_Operators/include/flatten_test.h"
-#include "Test_Operators/include/dense_test.h"
-#include "Test_Operators/include/relu_test.h"
-#include "Test_Operators/include/softmax_test.h"
+#include "conv_test.h"
+#include "max_pool_test.h"
+#include "flatten_test.h"
+#include "dense_test.h"
+#include "relu_test.h"
+#include "softmax_test.h"
+#include "max_pool_test.h"
 using json = nlohmann::json;
 
 // Function to save a vector to a .bin file
