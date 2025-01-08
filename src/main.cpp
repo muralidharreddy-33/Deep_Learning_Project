@@ -1,11 +1,14 @@
 #include <iostream>
 #include <fstream>
+#include <vector>
+#include <string>
 #include <nlohmann/json.hpp>
-#include "../include/conv.h"
-#include <chrono>
-#include <iomanip>
-#include <ctime>
-
+#include "conv.h"
+#include "max_pool.h"
+#include "flatten.h"
+#include "dense.h"
+#include "relu.h"
+#include "softmax.h"
 using json = nlohmann::json;
 
 // Function to get the current timestamp as a string
