@@ -11,14 +11,13 @@
 #include "softmax.h"
 using json = nlohmann::json;
 
-// Function to get the current timestamp as a string
-std::string getCurrentTimestamp() {
-    auto now = std::chrono::system_clock::now();
-    auto in_time_t = std::chrono::system_clock::to_time_t(now);
-
-    std::stringstream ss;
-    ss << std::put_time(std::localtime(&in_time_t), "%Y-%m-%d %X");
-    return ss.str();
+// Function to save a vector to a .bin file
+void save_binary_file(const std::string& file, const std::vector<float>& data) {
+    std::ofstream out(file, std::ios::binary);
+    if (!out) {
+        throw std::runtime_error("Failed to open file: " + file);
+    }
+    out.write(reinterpret_cast<const char*>(data.data()), data.size() * sizeof(float));
 }
 
 int main(int argc, char* argv[]) {
