@@ -11,28 +11,22 @@ std::vector<float> load_binary_file(const std::string& file) {
     if (!in) {
         throw std::runtime_error("Failed to open file: " + file);
     }
-
     // Get the size of the file
     in.seekg(0, std::ios::end);
     size_t size = in.tellg();
     in.seekg(0, std::ios::beg);
-
     // Check if the file size is a multiple of sizeof(float)
     if (size % sizeof(float) != 0) {
         throw std::runtime_error("File size is not a multiple of sizeof(float): " + file);
     }
-
     // Create a vector to hold the data
     std::vector<float> data(size / sizeof(float));
-
     // Read the data from the file into the vector
     in.read(reinterpret_cast<char*>(data.data()), size);
-
     // Check if the read operation was successful
     if (!in) {
         throw std::runtime_error("Failed to read file: " + file);
     }
-
     return data;
 }
 int main(int argc, char* argv[]) {
