@@ -31,9 +31,9 @@ std::vector<float> load_binary_file(const std::string& file) {
 }
 int main(int argc, char* argv[]) {
     // Check if the correct number of arguments is provided
-    if (argc != 2) {
-        std::cerr << "Usage: " << argv[0] << " <path_to_model_config.json>" << std::endl;
-        return -1;
+    if (argc != 3) {
+            std::cerr << "Usage: " << argv[0] << " <path_to_model_config.json> <path_to_test_model_config.json>" << std::endl;
+            return -1;
     }
     // Path to the model_config.json file from command-line argument
     std::string config_file_path = argv[1];
@@ -48,6 +48,17 @@ int main(int argc, char* argv[]) {
     // Parse the JSON file
     json model_config;
     config_file >> model_config;
+
+    // Path to the test_model_config.json file from command-line argument
+    std::string test_config_path = argv[2];
+    std::ifstream test_config_file(test_config_path);
+    if (!test_config_file.is_open()) {
+        std::cerr << "Failed to open the test model configuration file: " << test_config_path << std::endl;
+        return -1;
+    }
+
+    json test_model_config;
+    test_config_file >> test_model_config;
     map<string,vector<vector<float>>>Files_to_test;
 
     // Iterate through the layers
@@ -71,6 +82,17 @@ int main(int argc, char* argv[]) {
             vector<float> bias_data = load_binary_file(bias_file);
             Files_to_test[layer_type].push_back(kernel_data);
             Files_to_test[layer_type].push_back(bias_data);
+        }
+    }
+    for (const auto& test_case : test_model_config["test_case_layers"]) {
+        for (const auto& test : test_case.items()) {
+            std::string test_name = test.key();
+            std::string test_file = test.value();
+
+            std::cout << "Loading test case: " << test_name << " from file: " << test_file << std::endl;
+
+            vector<float> test_data = load_binary_file(test_file);
+            // You can process the test data here as needed
         }
     }
     return 0;

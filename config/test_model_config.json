@@ -1,15 +1,16 @@
 {
     "test_case_layers": [
       {
-        "test_1": "file_path_1", 
-        "test_2": "file_path_2", 
-        "test_3": "file_path_3",
-        "test_4": "file_path_1", 
-        "test_6": "file_path_2", 
-        "test_7": "file_path_3",
-        "test_8": "file_path_1", 
-        "test_9": "file_path_2", 
-        "test_10": "file_path_3" 
+        "test_1": "C:/Users/mcw/Downloads/DEEP_LEARNING_PROJECT/data/Test_files/test1.bin", 
+        "test_2":"C:/Users/mcw/Downloads/DEEP_LEARNING_PROJECT/data/Test_files/test2.bin", 
+        "test_3": "C:/Users/mcw/Downloads/DEEP_LEARNING_PROJECT/data/Test_files/test3.bin", 
+        "test_4": "C:/Users/mcw/Downloads/DEEP_LEARNING_PROJECT/data/Test_files/test4.bin",  
+        "test_5": "C:/Users/mcw/Downloads/DEEP_LEARNING_PROJECT/data/Test_files/test5.bin",  
+        "test_6": "C:/Users/mcw/Downloads/DEEP_LEARNING_PROJECT/data/Test_files/test6.bin",  
+        "test_7": "C:/Users/mcw/Downloads/DEEP_LEARNING_PROJECT/data/Test_files/test7.bin", 
+        "test_8": "C:/Users/mcw/Downloads/DEEP_LEARNING_PROJECT/data/Test_files/test8.bin",  
+        "test_9": "C:/Users/mcw/Downloads/DEEP_LEARNING_PROJECT/data/Test_files/test9.bin", 
+        "test_10": "C:/Users/mcw/Downloads/DEEP_LEARNING_PROJECT/data/Test_files/test10.bin"
       }
     ]
   }
