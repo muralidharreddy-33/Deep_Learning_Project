@@ -5,7 +5,6 @@ project(NeuralNetworkLayers)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-#set(CMAKE_BUILD_TYPE "Release" CACHE STRING "" FORCE)
 
 # Include directories
 include_directories(
@@ -26,19 +25,10 @@ add_executable(main
     utilities/src/file_utils.cpp
 )
 # Add test executable
+# Add test executable
 add_executable(test_operators
     Test_Operators/src/main_test.cpp
-    Test_Operators/src/conv_test.cpp
-    Test_Operators/src/relu_test.cpp
-    Test_Operators/src/max_pool_test.cpp
-    Test_Operators/src/softmax_test.cpp
-    Test_Operators/src/dense_test.cpp
-    Test_Operators/src/flatten_test.cpp
+    Test_Operators/src/test.cpp
     utilities/src/file_utils.cpp
-    Operators/src/conv.cpp
-    Operators/src/relu.cpp
-    Operators/src/dense.cpp
-    Operators/src/flatten.cpp
-    Operators/src/max_pool.cpp
-    Operators/src/softmax.cpp
 )
+
